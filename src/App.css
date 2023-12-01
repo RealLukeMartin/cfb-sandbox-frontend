@@ -1,3 +1,8 @@
+body {
+  background: #f0ead6;
+  color: #222609;
+}
+
 header {
   border: 1px solid #000;
   text-align: center;
@@ -10,4 +15,21 @@ footer {
 
 .team-box {
   width: 30%;
+  text-align: center;
+}
+
+.thumbnailTeamLogo {
+  width: 30%;
+}
+
+.miniTeamDetails {
+  padding: 0;
+}
+
+.miniTeamDetails li {
+  list-style-type: none;
+}
+
+.pagination-container {
+  margin: 20px 0;
 }

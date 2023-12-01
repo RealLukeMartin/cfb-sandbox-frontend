@@ -6,8 +6,6 @@ import { Flex } from 'antd';
 
 const boxStyle: React.CSSProperties = {
   width: '100%',
-  borderRadius: 6,
-  border: '1px solid #40a9ff',
 };
 
 const justifyOptions = [
@@ -30,6 +28,9 @@ export function Teams(props: { page: number }) {
         id: 0,
         name: "Loading...",
         city: "Loading...",
+        conference: "Loading...",
+        state: "Loading...",
+        logos: ['https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW4lMjBmb290YmFsbHxlbnwwfHwwfHx8MA%3D%3D'],
       }
     ] as ITeam[]
   });
@@ -49,30 +50,29 @@ export function Teams(props: { page: number }) {
 
   return (
     <div>
-      <h2>Teams</h2>
-      <Flex wrap="wrap" style={boxStyle} justify={justifyOptions[0]} align={alignOptions[0]} gap={20}>
+      <Flex wrap="wrap" style={boxStyle} justify={justifyOptions[1]} align={alignOptions[1]} gap={20}>
         {
-        teamsData && teamsData.teams.map((team: {
-          id: number;
-          name: string;
-          city: string;
-        }) => {
+        teamsData && teamsData.teams.map((team: ITeam) => {
           return (
             <div className="team-box" key={team.id}>
               <h3>{team.name}</h3>
-              <ul>
-                <li>City: {team.city}</li>
+              <img src={team.logos[0]} alt={`${team.name} Logo`} className='thumbnailTeamLogo' />
+              <ul className='miniTeamDetails'>
+                <li>{team.conference}</li>
+                <li>{team.city}, {team.state}</li>
               </ul>
             </div>
           )
         })
       }
       </Flex>
-      {
-        teamsData.count > 0 && teamsData.teams.length > 1 ? (
-          <TeamPagination limit={numberOfTeamsPerPage} count={teamsData.count} />
-        ) : (<p>Loading...</p>)
-      },
+      <Flex className="pagination-container" wrap="wrap" style={boxStyle} justify={justifyOptions[1]} align={alignOptions[1]} gap={20}>
+        {
+          teamsData.count > 0 && teamsData.teams.length > 1 ? (
+            <TeamPagination limit={numberOfTeamsPerPage} count={teamsData.count} />
+          ) : (<p>Loading...</p>)
+        },
+      </Flex>
     </div>
   );
 }
