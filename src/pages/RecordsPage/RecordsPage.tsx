@@ -31,6 +31,7 @@ export function RecordsPage() {
       })
       .catch((error) => console.log(error));
   }, [teamId]);
+
   return (
     <>
       <div>
