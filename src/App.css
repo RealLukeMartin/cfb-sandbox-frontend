@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
-/* * {
-  margin: 0;
-  padding: 0px 1px;
-  box-sizing: border-box;
-} */
 
 body {
   font-family: 'Lato', sans-serif;
@@ -101,7 +96,7 @@ footer {
 }
 
 .team-details-header {
-  width: 100%;
+  margin-left: 10px;
 }
 
 .chart-container {
@@ -116,4 +111,14 @@ footer {
 
 .copyright {
   font-weight: 100;
+}
+
+.team-logo-header {
+  height: 50px;
+}
+
+.team-details-topline {
+  width: 100%;
+  display: flex;
+  padding-top: 25px;
 }

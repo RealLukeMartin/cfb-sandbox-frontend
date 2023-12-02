@@ -20,6 +20,10 @@ export function RecordsPage() {
     team: 'Loading...',
 }] as IRecord[]);
 
+const [teamData, setTeamData] = useState({
+  logos: ['https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1lcmljYW4lMjBmb290YmFsbHxlbnwwfHwwfHx8MA%3D%3D']
+});
+
   useEffect(() => {
     fetch(`${config.api.url}/records?teamId=${teamId}`, {
       method: "GET",
@@ -32,11 +36,27 @@ export function RecordsPage() {
       .catch((error) => console.log(error));
   }, [teamId]);
 
+  useEffect(() => {
+    fetch(`${config.api.url}/teams/${teamId}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTeamData(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, [teamId]);
+
   return (
     <>
       <div>
         <Flex wrap="wrap" justify={'flex-start'} align={'flex-start'} gap={20}>
-          <h2 className="team-details-header">{recordsData[0].team}</h2>
+          <div className="team-details-topline">
+            <img src={teamData.logos[0]} alt="team logo header" className="team-logo-header" />
+            <h2 className="team-details-header">{recordsData[0].team}</h2>
+          </div>
+ 
           <RecordsTable teamId={Number(teamId)} recordsData={recordsData} />
           <div className="chart-container win-percent-chart">
             <WinPercentChart recordsData={recordsData} />
