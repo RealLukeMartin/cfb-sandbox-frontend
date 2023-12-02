@@ -3,6 +3,8 @@ import { config } from "../../config";
 import { ITeam } from "../../@types/teams";
 import { TeamPagination } from "../Pagination";
 import { Flex } from 'antd';
+import { Link } from 'react-router-dom';
+
 
 const boxStyle: React.CSSProperties = {
   width: '100%',
@@ -51,20 +53,23 @@ export function Teams(props: { page: number }) {
   return (
     <div>
       <Flex wrap="wrap" style={boxStyle} justify={justifyOptions[1]} align={alignOptions[1]} gap={20}>
-        {
-        teamsData && teamsData.teams.map((team: ITeam) => {
-          return (
-            <div className="team-box" key={team.id}>
-              <h3>{team.name}</h3>
-              <img src={team.logos[0]} alt={`${team.name} Logo`} className='thumbnailTeamLogo' />
-              <ul className='miniTeamDetails'>
-                <li>{team.conference}</li>
-                <li>{team.city}, {team.state}</li>
-              </ul>
-            </div>
-          )
-        })
-      }
+
+            {
+            teamsData && teamsData.teams.map((team: ITeam) => {
+              return (
+                  <div className="team-box" key={team.id}>
+                    <Link className="team-link-box" to={`records/${team.id}`}>
+                      <h3>{team.name}</h3>
+                      <img src={team.logos[0]} alt={`${team.name} Logo`} className='thumbnailTeamLogo' />
+                      <ul className='miniTeamDetails'>
+                        <li>{team.conference}</li>
+                        <li>{team.city}, {team.state}</li>
+                      </ul>
+                    </Link>
+                  </div>
+              )
+            })
+          }
       </Flex>
       <Flex className="pagination-container" wrap="wrap" style={boxStyle} justify={justifyOptions[1]} align={alignOptions[1]} gap={20}>
         {
