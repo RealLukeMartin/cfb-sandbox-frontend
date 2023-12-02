@@ -48,19 +48,6 @@ export function WinPercentChart(props: {recordsData: IRecord[]}) {
         data={data}
         dataComponent={<ScatterPoint min={min} max={max} />}
       />
-    {/* <VictoryAxis dependentAxis
-      tickValues={[0.2, 0.4, 0.6, 0.8, 1.0]}
-    />
-    <VictoryAxis
-      scale="time"
-      tickValues={data.map(({ x }) => {
-        const yearRemainder = Number(x) % 10;
-        if (yearRemainder !== 0) {
-          return;
-        }
-        return x
-      })}
-      /> */}
     </VictoryChart>
   );
 }
