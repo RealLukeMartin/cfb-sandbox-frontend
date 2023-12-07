@@ -21,7 +21,7 @@ const justifyOptions = [
 
 const alignOptions = ['flex-start', 'center', 'flex-end'];
 
-export function Teams(props: { page: number }) {
+export function Teams(props: { page: number, teamSearch: string }) {
   const numberOfTeamsPerPage = 21;
   const [teamsData, setTeamsData] = useState({
     count: 0,
@@ -38,7 +38,7 @@ export function Teams(props: { page: number }) {
   });
 
   useEffect(() => {
-    fetch(`${config.api.url}/teams?page=${props.page}&limit=${numberOfTeamsPerPage}`, {
+    fetch(`${config.api.url}/teams?page=${props.page}&limit=${numberOfTeamsPerPage}&team=${props.teamSearch}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -47,7 +47,7 @@ export function Teams(props: { page: number }) {
         console.log(data);
       })
       .catch((error) => console.log(error));
-  }, [props.page]);
+  }, [props.page, props.teamSearch]);
 
 
   return (
