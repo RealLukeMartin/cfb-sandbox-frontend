@@ -12,12 +12,13 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: '#222609',
+            colorPrimary: '#484640',
             colorPrimaryBorder: '#222609',
+            fontFamily: "'Lato', sans-serif",
           },
           components: {
-            Pagination: {
-
+            Button: {
+              primaryColor: '#f0ead6',
             }
           }
         }}

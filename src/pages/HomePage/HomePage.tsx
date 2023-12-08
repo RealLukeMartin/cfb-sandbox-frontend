@@ -16,7 +16,9 @@ export function HomePage() {
   return (
     <>
       <div>
-        <TeamSearchBox />
+        <div className="teams-search-box-container">
+          <TeamSearchBox />
+        </div>
         <Teams page={Number(page)} teamSearch={teamSearch} />
       </div>
     </>

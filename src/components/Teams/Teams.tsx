@@ -73,7 +73,7 @@ export function Teams(props: { page: number, teamSearch: string }) {
       </Flex>
       <Flex className="pagination-container" wrap="wrap" style={boxStyle} justify={justifyOptions[1]} align={alignOptions[1]} gap={20}>
         {
-          teamsData.count > 0 && teamsData.teams.length > 1 ? (
+          teamsData.count > 0 && teamsData.teams.length >= 1 ? (
             <TeamPagination limit={numberOfTeamsPerPage} count={teamsData.count} />
           ) : (<p>Loading...</p>)
         },
