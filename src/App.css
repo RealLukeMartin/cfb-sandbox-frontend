@@ -132,3 +132,13 @@ footer {
   margin: 0 auto;
   padding: 20px 0 0 0;
 }
+
+@media (max-width: 1250px) {
+  .chart-container {
+    width: 100%;
+  }
+  
+  .records-table {
+    width: 100%;
+  }
+}

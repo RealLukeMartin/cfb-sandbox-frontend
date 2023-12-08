@@ -38,7 +38,7 @@ export function RecordsTable(props: { teamId: number, recordsData: IRecord[] }) 
   ]
 
   return (
-    <div>
+    <div className="records-table">
       <Table dataSource={dataSource} columns={columns} />
     </div>
   );
